@@ -1,20 +1,21 @@
-$(document).ready(function () {
-    //加载header.html
-    $('.body-page').load('Views/Home.html');
+var CurrentTab = "home-tab"
+
+$(document).ready(function () 
+{
+  PageNav(CurrentTab)
 });
 
-function PageNav(item)
+$('#navTab a').on('click', function (event) 
 {
-  switch(item)
-  {
-    case "home":
-      $('#navTab li:first-child a').tab('show')
-      $('.body-page').load('Views/Home.html');
-      break;
-    case "about":
-      $('#navTab li:nth-child(2) a').tab('show')
-      $('.body-page').load('Views/About.html');
-      break;
-  }
+  event.preventDefault()
+  $(this).tab('show')
 
+  PageNav(this.id)
+})
+
+function PageNav(Page) 
+{
+  var tab = "View/" + Page.split("-", 1) + ".html";
+  $('.body-page').load(tab);
+  CurrentTab = Page;
 }
