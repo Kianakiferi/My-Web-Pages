@@ -2,11 +2,116 @@
     <div>
         <h1>xBRZ Image Scale</h1>
     </div>
+    <div class="row mt-4">
+        <div class="col-sm" style="min-width: 20rem;">
+            <div class="card">
+                <div class="card-header">Settings</div>
+                <div class="card-body">
+                    <div class="custom-file">
+                        <input id="inputPhoto" type="file" accept="image/png" class="custom-file-input" onchange="FileInput"
+                            aria-describedby="inputPhotoAddon">
+                        <label id="inputPhotoAddon" class="custom-file-label control-label" for="inputPhoto">Select
+                            Image</label>
+                        <p class="text-muted">Image size must small than 128x128.</p>
+                    </div>
 
-    <div class="custom-file mt-4">
-        <input type="file" class="custom-file-input" id="inputPhoto">
-        <label class="custom-file-label" for="inputPhoto" aria-describedby="inputPhotoAddon">Choose file</label>
+                    <div>
+                        <div class="row mt-4">
+                            <label class="col" for="customRange3" >Scale multiple </label>
+                            <p class="col text-right" id="rangeValueLable">3x</p>
+                        </div>
+                        <input type="range" class="custom-range" min="2" max="6" step="1" value="3"
+                            oninput="SliderChange()" id="customRange3">
+                    </div>
+                    
+                    <div>
+                        <button type="button" class="btn btn-outline-primary btn-block mt-4" onclick="buttonScaleClick()">Scale</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <canvas id="canvas" class="rounded"></canvas>
+            <canvas id="canvasScale" class="rounded"></canvas>
+        </div>
+        <div class="mt-lg-4">
+            <!-- <img src="/images/Pixel/bookshelf.png" class="rounded" height="300px" width="300px"> -->
+            
+        </div>-
     </div>
 
+    <script>
+        const range = document.getElementById('customRange3');
+        const rangeValueLable = document.getElementById('rangeValueLable');
+
+        function SliderChange() {
+            rangeValueLable.innerHTML = range.value + "x";
+            console.log(range.value);
+        };
+
+        function buttonScaleClick(){
+
+        }
+    </script>
+    <script type="module">
+        import { scaleImage } from '/libs/xBRZ.js'
+        // scaleImage()
+
+        let canvas = document.querySelector('#canvas');
+        let ctx = canvas.getContext('2d');
+
+        let canvasScale = document.querySelector('#canvasScale');
+        let ctxScale = canvasScale.getContext('2d');
+
+        var dpr = window.devicePixelRatio || window.webkitDevicePixelRatio || window.mozDevicePixelRatio || 1;
+
+
+        let srcImage = new Image();
+        srcImage.src = '/images/Pixel/bookshelf.png';
+
+        srcImage.onload = () => {
+            const { width, height } = srcImage;
+            canvas.width = width * 3;
+            canvas.height = height * 3;
+            ctx.scale(3, 3);
+            ctx.drawImage(srcImage, 0, 0, width, height);
+            const imageData = ctx.getImageData(0, 0, width, height);
+            const buffer = Array.from(imageData.data);
+            let source = [];
+            for (let i = 0, len = buffer.length; i < len; i += 4) {
+                const r = buffer[i];
+                const g = buffer[i + 1];
+                const b = buffer[i + 2];
+                const a = buffer[i + 3];
+                const pixel = a << 24 | r << 16 | g << 8 | b;
+                source.push(pixel)
+            }
+            const scaleSize = 6;
+            let target = new Array(width * scaleSize * height * scaleSize);
+            target.fill(0);
+            scaleImage(scaleSize, source, target, width, height, 0, height);
+
+            let bufferScale = [];
+            for (let i = 0, len = target.length; i < len; ++i) {
+                const pixel = target[i];
+                const a = (pixel >> 24) & 0xff;
+                const r = (pixel >> 16) & 0xff;
+                const g = (pixel >> 8) & 0xff;
+                const b = (pixel) & 0xff;
+                bufferScale.push(r);
+                bufferScale.push(g);
+                bufferScale.push(b);
+                bufferScale.push(a);
+            }
+
+            const widthScale = width * scaleSize;
+            const heightScale = height * scaleSize;
+            canvasScale.width = widthScale;
+            canvasScale.height = heightScale;
+            const imgScaleBuffer = new Uint8ClampedArray(bufferScale);
+            const imgScaleData = new ImageData(imgScaleBuffer, widthScale, heightScale);
+            ctxScale.putImageData(imgScaleData, 0, 0)
+        }
+    </script>
 
 </div>

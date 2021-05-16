@@ -1,21 +1,29 @@
 var CurrentTab = "home-tab"
 
-$(document).ready(function () 
-{
-  PageNav(CurrentTab)
+$(document).ready(function () {
+    var result = localStorage.getItem("CurrentTab");
+    if (result != null) {
+        CurrentTab = result;
+    }
+    OnNavigated(CurrentTab)
 });
 
-$('#navTab a').on('click', function (event) 
-{
-  event.preventDefault()
-  $(this).tab('show')
+$('#navTab a').on('click', function (event) {
+    event.preventDefault()
 
-  PageNav(this.id)
+    $(this).tab('show')
+    if (CurrentTab != this.id) {
+        OnNavigated(this.id)
+    }
+
 })
 
-function PageNav(Page) 
-{
-  var tab = "View/" + Page.split("-", 1) + ".html";
-  $('.body-page').load(tab);
-  CurrentTab = Page;
+function OnNavigated(Page) {
+    var tab = "View/" + Page.split("-", 1) + ".html";
+    $('.body-page').load(tab);
+
+    CurrentTab = Page;
+    localStorage.setItem("CurrentTab", CurrentTab);
 }
+
+// Scripts page
