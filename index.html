@@ -1,76 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="stylesheet" href="/libs/bootstrap.css" />
-    <link rel="stylesheet" href="/css/site.css" />
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Hello, World!</title>
-  </head>
+  <link rel="stylesheet" href="/libs/bootstrap.css" />
+  <link rel="stylesheet" href="/css/site.css" />
 
-  <body>
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
-        <div class="container">
-          <a
-            class="navbar-brand"
-            href=""
-            id="home-main-tab"
-            data-toggle="tab"
-            role="tab"
-            >WebPages</a
-          >
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav" id="nav-tab">
-              <li class="nav-item">
-                <a
-                  class="nav-link active"
-                  href="#"
-                  id="home-tab"
-                  onclick="PageNav('home')"
-                  >Home</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link"
-                  href="#"
-                  id="about-tab"
-                  onclick="PageNav('about')"
-                  >About</a
-                >
-              </li>
-              
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
+  <title>Hello, World!</title>
+</head>
 
-    <div class="body-page" min-height="200px"></div>
-
-    <footer class="footer mt-4 text-muted bg-light">
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
       <div class="container">
-        &copy; FANS
-      </div>
-    </footer>
+        <a class="navbar-brand" href="" id="home-main-tab" data-toggle="tab" role="tab">WebPages</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav" id="nav-tab">
+            <li class="nav-item">
+              <a class="nav-link active" href="#" id="home-tab" onclick="PageNav('home')">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="about-tab" onclick="PageNav('about')">About</a>
+            </li>
 
-    <script src="/libs/jquery.js"></script>
-    <script src="/libs/bootstrap.js"></script>
-    <script src="/js/site.js"></script>
-  </body>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="body-page" min-height="200px"></div>
+
+  <footer class="footer mt-4 text-muted bg-light">
+    <div class="container">
+      &copy; FANS
+    </div>
+  </footer>
+
+  <script src="/libs/jquery.js"></script>
+  <script src="/libs/bootstrap.js"></script>
+  <script src="/js/site.js"></script>
+</body>
+
 </html>
