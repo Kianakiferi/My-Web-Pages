@@ -15,7 +15,6 @@ $('#navTab a').on('click', function (event) {
     if (CurrentTab != this.id) {
         OnNavigated(this.id)
     }
-
 })
 
 function OnNavigated(Page) {

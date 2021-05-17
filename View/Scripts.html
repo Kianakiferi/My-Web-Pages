@@ -33,15 +33,18 @@
             </div>
         </div>
         <div class="col">
-            <img src="/images/Pixel/bookshelf.png" class="float-left rounded m-2" width="128px" height="128px"></img>
+            <canvas class="pixelperfect float-left rounded m-2" data-url="/images/Pixel/bookshelf.png" data-scale="16"></canvas>
+            <!-- <img src="/images/Pixel/bookshelf.png" class="float-left rounded m-2"  width="128px" height="128px"></img> -->
 
             <canvas id="canvasScale" class="float-left rounded m-2"></canvas>
         </div>
     </div>
 
+    <script type="module" src="/js/site.mjs"></script>
+    
     <script>
-        const sliderScale = document.getElementById('sliderScale');
-        const sliderScaleValueLable = document.getElementById('sliderScaleValueLable');
+        var sliderScale = document.getElementById('sliderScale');
+        var sliderScaleValueLable = document.getElementById('sliderScaleValueLable');
         var multiple = 3;
         var displayScale = 3;
 
@@ -51,68 +54,10 @@
         };
 
         function buttonScaleClick() {
-
-
-        }
-    </script>
-    <script type="module">
-        import { scaleImage } from '/libs/xBRZ.js'
-
-        let canvasScaled = document.querySelector('#canvasScale');
-        let context = canvasScaled.getContext('2d');
-
-        let srcImage = new Image();
-        srcImage.src = '/images/Pixel/bookshelf.png';
-
-        srcImage.onload = () => {
-            let { width, height } = srcImage;
-
-            context.drawImage(srcImage, 0, 0, width, height);
-            let imageData = context.getImageData(0, 0, width, height);
-
-            let buffer = Array.from(imageData.data);
-            let source = [];
-            for (let i = 0, len = buffer.length; i < len; i += 4) {
-                let r = buffer[i];
-                let g = buffer[i + 1];
-                let b = buffer[i + 2];
-                let a = buffer[i + 3];
-                let pixel = a << 24 | r << 16 | g << 8 | b;
-                source.push(pixel)
-            }
-
-            let scaleSize = 6;
-            let target = new Array(width * scaleSize * height * scaleSize);
-            target.fill(0);
-            scaleImage(scaleSize, source, target, width, height, 0, height);
-
-            let bufferScale = [];
-            for (let i = 0, len = target.length; i < len; ++i) {
-                let pixel = target[i];
-                let a = (pixel >> 24) & 0xff;
-                let r = (pixel >> 16) & 0xff;
-                let g = (pixel >> 8) & 0xff;
-                let b = (pixel) & 0xff;
-                bufferScale.push(r);
-                bufferScale.push(g);
-                bufferScale.push(b);
-                bufferScale.push(a);
-            }
-
-            let widthScaled = width * scaleSize;
-            let heightScaled = height * scaleSize;
-
-            let scaleBuffer = new Uint8ClampedArray(bufferScale);
-            let imageDataScaled = new ImageData(scaleBuffer, widthScaled, heightScaled);
-
-            canvasScaled.width = 300;
-            canvasScaled.height = 300;
-
-            context.putImageData(imageDataScaled, 0, 0)
-            context.scale(displayScale, displayScale);
-            context.drawImage(canvasScaled, 0, 0, 314, 314);
+            
 
         }
+
     </script>
 
 </div>
