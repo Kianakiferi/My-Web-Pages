@@ -1,5 +1,7 @@
 var CurrentTab = "home-tab"
 
+//#region Navgation
+// Navgation to original page on start.
 $(document).ready(function () {
     var result = localStorage.getItem("CurrentTab");
     if (result != null) {
@@ -8,6 +10,7 @@ $(document).ready(function () {
     OnNavigated(CurrentTab)
 });
 
+// NavgationBar click and switch pages
 $('#navTab a').on('click', function (event) {
     event.preventDefault()
 
@@ -24,5 +27,9 @@ function OnNavigated(Page) {
     CurrentTab = Page;
     localStorage.setItem("CurrentTab", CurrentTab);
 }
+//#endregion
 
-// Scripts page
+//#region xBRZ Page
+
+
+//#endregion

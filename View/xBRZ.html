@@ -1,0 +1,102 @@
+<div class="container">
+    <div class="mb-2">
+        <h1>xBRZ Image Scale</h1>
+        <P>xBRZ algorithm is a high quality image upscaling filter by
+            <a href="https://sourceforge.net/projects/xbrz/" target="_blank">
+                <span class="font-weight-bold text-body">
+                    Zenju
+                </span>
+            </a>
+        </P>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="mb-4">
+                <h4>Examples:</h4>
+                <div class="btn-group-toggle" id="buttonsImagesGroup" data-toggle="buttons">
+                    <label class="btn btn-light active" title="Bookshelf">
+                        <canvas class="pixelperfect rounded m-1" data-url="/images/Pixel/bookshelf.png"
+                            data-scale="8"></canvas>
+                        <input type="radio" name="options" id="option1" value="1" checked>
+                    </label>
+                    <label class="btn btn-light" title="Furnace">
+                        <canvas class="pixelperfect  rounded m-1" data-url="/images/Pixel/furnace_front.png"
+                            data-scale="8"></canvas>
+                        <input type="radio" name="options" id="option2" value="2">
+                    </label>
+                    <label class="btn btn-light" title="Grass Block">
+                        <canvas class="pixelperfect  rounded m-1" data-url="/images/Pixel/grass_block_side.png"
+                            data-scale="8"></canvas>
+                        <input type="radio" name="options" id="option3" value="3">
+                    </label>
+                    <label class="btn btn-light" title="Carved Pumpkin">
+                        <canvas class="pixelperfect  rounded m-1" data-url="/images/Pixel/carved_pumpkin.png"
+                            data-scale="8"></canvas>
+                        <input type="radio" name="options" id="option4" value="4">
+                    </label>
+                    <label class="btn btn-light" title="Oak Sapling">
+                        <canvas class="pixelperfect  rounded m-1" data-url="/images/Pixel/oak_sapling.png"
+                            data-scale="8"></canvas>
+                        <input type="radio" name="options" id="option5" value="5">
+                    </label>
+                    <label class="btn btn-light" title="Peony">
+                        <canvas class="pixelperfect  rounded m-1" data-url="/images/Pixel/peony_top.png"
+                            data-scale="8"></canvas>
+                        <input type="radio" name="options" id="option6" value="6">
+                    </label>
+                    <label class="btn btn-light" title="TNT">
+                        <canvas class="pixelperfect rounded m-1" data-url="/images/Pixel/tnt_side.png"
+                            data-scale="8"></canvas>
+                        <input type="radio" name="options" id="option7" value="7">
+                    </label>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">Settings</div>
+                <div class="card-body">
+                    <div class="mb-4 mt-2">
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input id="inputPhoto" type="file" accept="image/png" class="custom-file-input"
+                                    onchange="FileInput" aria-describedby="inputPhotoAddon" disabled
+                                    title="Unfinished, comming soon...">
+                                <label class="custom-file-label control-label" for="inputPhoto">
+                                    Select Image</label>
+                            </div>
+                        </div>
+                        <small class="text-muted">Image size must small than 128x128.</small>
+                    </div>
+
+                    <div class="mb-4">
+                        <div class="row">
+                            <span class="col">Scale multiple</span>
+                            <div class="col text-right">
+                                <span id="sliderScaleValueLable">3</span><span>x</span>
+                            </div>
+                        </div>
+                        <input id="sliderScale" type="range" class="custom-range" min="2" max="6" step="1" value="3">
+                    </div>
+
+                    <div class="custom-control custom-checkbox mb-4" title="Unfinished, comming soon...">
+                        <input type="checkbox" class="custom-control-input" id="checkAutoScale" disabled>
+                        <label class="custom-control-label" for="checkAutoScale">Auto scale after selected</label>
+                    </div>
+
+                    <button id="buttonScale" type="button" class="btn btn-lg btn-outline-primary btn-block"
+                        title="Scale Image">
+                        <!-- <span id="spinnerScaleProcessing" class="spinner-border spinner-border-sm mb-1" role="status" aria-hidden="true" hidden></span>
+                        <span class="sr-only">Loading...</span> -->
+                        Scale
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 mb-4 ">
+            <canvas id="canvasScaled" class="rounded img-fluid"></canvas>
+            <canvas id="tempCanvas" hidden></canvas>
+        </div>
+    </div>
+</div>
+<script type="module" src="/js/scale.js"></script>

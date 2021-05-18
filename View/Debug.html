@@ -1,0 +1,37 @@
+<div class="container">
+    <h1 class="mb-4">Debug Page</h1>
+
+
+    <div id="buttonGroup" class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-secondary active">
+            <input type="radio" name="options" id="option1" value="1" checked> Active
+        </label>
+        <label class="btn btn-secondary">
+            <input type="radio" name="options" id="option2" value="2"> Radio
+        </label>
+        <label class="btn btn-secondary">
+            <input type="radio" name="options" id="option3" value="3"> Radio
+        </label>
+    </div>
+
+    <button onclick="test()">Test</button>
+    <a href="http://127.0.0.1:5500/">Home</a>
+</div>
+
+<script>
+    $('#buttonGroup label').on('click', function () {
+        var selected = $('#buttonGroup input:radio:checked').val();
+
+        console.log(`Selected image: ${selected}`);
+    });
+
+    function test() {
+        var i = 0;
+        do {
+            console.log(i);
+            i++;
+        } while (i < 5);
+
+        console.log(true || false);
+    }
+</script>
