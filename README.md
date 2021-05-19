@@ -1,37 +1,44 @@
-Welcome to Glitch
+Kiana's Web Pages
 =================
 
-Click `Show` in the header to see your app live. Updates to your code will instantly deploy and update live.
+xBRZ image scaler and some pages, Using HTML,JavaScript, jQuery, Bootstrap...
 
-**Glitch** is the friendly community where you'll build the app of your dreams. Glitch lets you instantly create, remix, edit, and host an app, bot or site, and you can invite collaborators or helpers to simultaneously edit code with you.
+## Pages
 
-Find out more [about Glitch](https://glitch.com/about).
+- **index.html**
+  Website starts here. with navigation bar, you can navigate between pages  
 
+- **home.html**
+  Home page.
 
-Your Project
-------------
+- **xBRZ.html**
+  Scale images using xBRZ, and image toggle switches.
 
-### ← README.md
+- **about.html**
+  About this website.
 
-That's this file, where you can tell people what your cool website does and how you built it.
+- **images**
+  some images.
 
-### ← index.html
+- **css**
+- **js**
+- **libs**
+  website styles and scripts.
 
-Where you'll write the content of your website. 
+## xBRZ JavaScript Usage
+```JavaScript
+<canvas id="canvasScaled"></canvas>
 
-### ← style.css
+<script type="module">
+import {
+    ScaleImageAndDraw
+} from '/js/scale.js'
 
-CSS files add styling rules to your content.
+ScaleImageAndDraw("/images/bookshelf.png"); 
+</script>
+```
+Import and draw~
 
-### ← script.js
+## License
 
-If you're feeling fancy you can add interactivity to your site with JavaScript.
-
-### ← assets
-
-Drag in `assets`, like images or music, to add them to your project
-
-Made by [Glitch](https://glitch.com/)
--------------------
-
-\ ゜o゜)ノ
+[GNU GPLv3](https://github.com/Kianakiferi/My-Web-Pages/blob/glitch/LICENSE)
