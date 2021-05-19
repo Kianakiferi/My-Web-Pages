@@ -39,6 +39,10 @@ ScaleImageAndDraw("/images/bookshelf.png");
 ```
 Import and draw~
 
+## [Screenshots](https://github.com/Kianakiferi/My-Web-Pages/tree/main/screenshots)
+![Home page](./screenshots/home.png)
+![xBRZ page](./screenshots/xBRZ.png)
+![About page](./screenshots/about.png)
 ## License
 
 [GNU GPLv3](https://github.com/Kianakiferi/My-Web-Pages/blob/glitch/LICENSE)
