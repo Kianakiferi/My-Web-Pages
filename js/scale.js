@@ -2,42 +2,12 @@ import {
     scaleImage
 } from '/libs/xBRZ.js'
 
-//#region Pages
-var pixelPerfect = new CodePeg.PixelPerfect($('canvas.pixelperfect'), {
-    urlTag: 'url',
-    scaleTag: 'scale',
-    filter: 'nearestneighbor'
-});
-
-$('#sliderScale').on('input', function () {
-    var value = $('#sliderScale').val();
-    $('#sliderScaleValueLable').text(value)
-
-    //console.log(`Slider value:${value}`);
-});
-
-
-//#endregion
-$(document).ready(function () {
-    ScaleImageAndDraw("/images/Pixel/bookshelf.png");
-});
-
-
 let displayScale = 3;
 let targetSize = 500;
 
 var Width, Height = 0;
 
-$('#buttonScale').on('click', function () {
-    let selected = $('#buttonsImagesGroup input:radio:checked');
-    let path = selected.prev().data("url");
-
-    console.log(`${selected.val()}, ${path}, Clicked`);
-    ScaleImageAndDraw(path);
-
-});
-
-function ScaleImageAndDraw(ImagePath) {
+export function ScaleImageAndDraw(ImagePath) {
     if (!(ImagePath == null || ImagePath === "")) {
         let image = new Image();
         image.onload = () => {

@@ -100,3 +100,34 @@
     </div>
 </div>
 <script type="module" src="/js/scale.js"></script>
+<script type="module">
+import {
+    ScaleImageAndDraw
+} from '/js/scale.js'
+
+var pixelPerfect = new CodePeg.PixelPerfect($('canvas.pixelperfect'), {
+    urlTag: 'url',
+    scaleTag: 'scale',
+    filter: 'nearestneighbor'
+});
+
+$(document).ready(function () {
+    pixelPerfect.scale();
+
+    ScaleImageAndDraw("/images/Pixel/bookshelf.png"); 
+});
+
+$('#buttonScale').on('click', function () {
+    let selected = $('#buttonsImagesGroup input:radio:checked');
+    let path = selected.prev().data("url");
+
+    console.log(`${selected.val()}, ${path}, Clicked`);
+    ScaleImageAndDraw(path);
+
+});
+
+$('#sliderScale').on('input', function () {
+    var value = $('#sliderScale').val();
+    $('#sliderScaleValueLable').text(value);
+});
+</script>
